@@ -1,0 +1,32 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-ai
+  title: sample-ai
+  annotations:
+    janus-idp.io/tekton: sample-ai
+    tektonci/build-namespace: demo
+    tekton.dev/cicd : "true"
+    github.com/project-slug: piomin/sample-ai
+    sonarqube.org/project-key: piomin_sample-ai
+    backstage.io/kubernetes-id: sample-ai
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: sample-ai
+    prometheus.io/rule: container_memory_usage_bytes{pod=~"sample-ai-.*"}|pod,rate(container_cpu_usage_seconds_total{pod=~"sample-ai-.*"}[5m])|pod
+  links:
+    - url: https://devspaces.apps.piomin.ewyw.p1.openshiftapps.com#https://github.com/piomin/sample-ai
+      title: 🚀 Develop App
+      icon: launch
+  tags:
+    - spring-boot
+    - spring-ai
+    - java
+    - maven
+    - tekton
+    - argocd
+    - renovate
+    - sonarqube
+spec:
+  type: service
+  owner: piomin
+  lifecycle: experimental
